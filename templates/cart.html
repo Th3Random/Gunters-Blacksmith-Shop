@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <!-- Your UI team can link the style.css here later! -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="text-align: center; color: white; padding-top: 50px;">
+
+    <h1>Your Inventory (Cart)</h1>
+
+    <div style="background-color: #222; padding: 20px; max-width: 400px; margin: 0 auto; border: 2px solid gray;">
+        <!-- Checks if the cart has items -->
+        {% if cart %}
+            <ul style="list-style-type: none; padding: 0;">
+                <!-- Loops through every item in the Python session cart -->
+                {% for item in cart %}
+                    <li style="font-size: 20px; margin-bottom: 10px;">🛡️ {{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Your cart is currently empty.</p>
+        {% endif %}
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('home') }}" style="color: orange;">Return to Shop</a>
+
+</body>
+</html>

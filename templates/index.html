@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunter's Blacksmith Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <!-- Floating Cart Button: Fixed position prevents it from breaking your layout -->
+    <a href="{{ url_for('view_cart') }}" style="position: fixed; top: 15px; right: 15px; background-color: #222; color: white; padding: 10px 15px; text-decoration: none; border-radius: 8px; font-family: monospace; border: 2px solid gray; z-index: 1000;">
+        🛒 Cart
+    </a>
+
+    <!--Makes sure the page fits on mobile devices-->
+    <div class="app">
+
+        <!--Page title at top of page-->
+        <div class="page-title">
+            <img src="{{ url_for('static', filename='assets/page-title.png') }}" alt="Page Title">
+        </div>
+
+        <!--Add to cart title-->
+        <div class="title-headings">
+            <img src="{{ url_for('static', filename='assets/add-to-cart-title.png') }}" alt="Add to Cart">
+        </div>
+
+        <!--Shop floor with items section-->
+        <div class="shop-floor">
+
+            <!--Horizontal scrollable bar with items-->
+            <div class="scroll-bar">
+                
+                <!-- Notice we kept your exact <button> class but added an onclick action -->
+                <button class="item" data-item="armor" onclick="window.location.href='{{ url_for('buy_page', item_name='armor') }}'">
+                    <img src="{{ url_for('static', filename='assets/armor.png') }}" alt="Armor">
+                </button>
+                
+                <button class="item" data-item="chainmail" onclick="window.location.href='{{ url_for('buy_page', item_name='chainmail') }}'">
+                    <img src="{{ url_for('static', filename='assets/chainmail.png') }}" alt="Chainmail">
+                </button>
+                
+                <button class="item" data-item="cooking-pot" onclick="window.location.href='{{ url_for('buy_page', item_name='cooking-pot') }}'">
+                    <img src="{{ url_for('static', filename='assets/cooking-pot.png') }}" alt="Cooking Pot">
+                </button>
+                
+                <button class="item" data-item="sword" onclick="window.location.href='{{ url_for('buy_page', item_name='sword') }}'">
+                    <img src="{{ url_for('static', filename='assets/sword.png') }}" alt="Sword">
+                </button>
+
+                <!--ONLY FOR TESTING THE SCROLL BAR!-->
+                <button class="item" data-item="armor" onclick="window.location.href='{{ url_for('buy_page', item_name='armor') }}'">
+                    <img src="{{ url_for('static', filename='assets/armor.png') }}" alt="Armor">
+                </button>
+                <button class="item" data-item="chainmail" onclick="window.location.href='{{ url_for('buy_page', item_name='chainmail') }}'">
+                    <img src="{{ url_for('static', filename='assets/chainmail.png') }}" alt="Chainmail">
+                </button>
+
+            </div>
+
+        </div>
+
+        <!--Order status title-->
+        <div class="title-headings">
+            <img src="{{ url_for('static', filename='assets/queue-title.png') }}" alt="Queue Title">
+        </div>
+
+    </div>
+
+</body>
+</html>
