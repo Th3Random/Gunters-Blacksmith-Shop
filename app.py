@@ -49,5 +49,15 @@ def get_orders():
         return jsonify(orders)
     return jsonify([])
 
+@app.route('/remove_from_cart/<int:index>', methods=['POST'])
+def remove_from_cart(index):
+    if 'cart' in session:
+        cart = session['cart']
+        # Check if the index is valid before popping it
+        if 0 <= index < len(cart):
+            cart.pop(index)
+            session['cart'] = cart
+    return redirect(url_for('view_cart'))
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
